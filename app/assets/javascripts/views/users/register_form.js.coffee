@@ -25,6 +25,6 @@ class Todolist.Views.RegisterForm extends Backbone.View
         for field in ['username', 'password', 'password_confirmation']
           @$("##{field}").parents('.control-group').removeClass('error')
         for field, err of errors
-          @$("##{field}").siblings('.help-inline').text(err.join(','))
+          @$("##{field}").siblings('.help-inline').text(err.join(', '))
           @$("##{field}").parents('.control-group').addClass('error')
     )

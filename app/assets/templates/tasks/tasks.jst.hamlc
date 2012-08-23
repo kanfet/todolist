@@ -1,0 +1,11 @@
+.row
+  .span4
+    %strong Title
+  .span2
+    %strong Due date
+  .span2
+    %strong Priority
+  .span2
+    %strong Completed?
+
+%hr

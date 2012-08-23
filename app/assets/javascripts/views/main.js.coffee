@@ -21,7 +21,9 @@ class Todolist.Views.Main extends Backbone.View
 
   showTasks: ->
     if Todolist.current_user
-      @tasksView = new Todolist.Views.Tasks()
-      @$el.html(@tasksView.render().el)
+      tasks = new Todolist.Collections.Tasks()
+      @tasksView = new Todolist.Views.Tasks(collection: tasks)
+      @$el.html(@tasksView.el)
+      tasks.fetch()
     else
       Backbone.history.navigate('', trigger: true)

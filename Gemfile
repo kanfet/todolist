@@ -29,6 +29,11 @@ gem "haml-rails"
 
 gem "backbone-on-rails"
 
+gem "bootstrap-datepicker-rails", "~> 0.6.16"
+
+# Enumerable columns
+gem 'enumerize', "~> 0.3.0"
+
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 

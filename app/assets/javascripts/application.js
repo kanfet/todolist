@@ -17,6 +17,8 @@
 //= require backbone
 //= require hamlcoffee
 //
+//= require bootstrap-datepicker
+//
 //= require todolist
 //
 //= require_tree ../templates

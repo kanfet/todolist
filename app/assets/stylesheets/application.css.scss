@@ -3,4 +3,6 @@
 // Bootstrap body padding for fixed navbar
 body { padding-top: 60px; }
 
-@import "bootstrap-responsive";
+@import "bootstrap-datepicker";
+
+.hidden{ display: none; }
