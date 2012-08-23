@@ -20,14 +20,17 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 
   gem 'bootstrap-sass', "~> 2.0.4.0"
+  gem 'haml_coffee_assets'
 end
 
 gem 'jquery-rails'
 
 gem "haml-rails"
 
+gem "backbone-on-rails"
+
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

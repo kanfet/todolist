@@ -1,4 +1,12 @@
 Todolist::Application.routes.draw do
+
+  resources :tasks
+
+  scope "api" do
+    resources :sessions, only: [:create, :destroy]
+  end
+
+  root to: "tasks#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
