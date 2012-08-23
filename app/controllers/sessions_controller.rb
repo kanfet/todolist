@@ -3,11 +3,17 @@ class SessionsController < ApplicationController
   respond_to :json
 
   def create
-    #render json: {id: 1}
-    render json: {errors: "Wrong username and/or password"}, status: 422
+    user = User.authenticate(params[:username], params[:password])
+    if user
+      session[:user_id] = user.id
+      render json: {id: user.id}
+    else
+      render json: {errors: "Wrong username and/or password"}, status: 422
+    end
   end
 
   def destroy
-
+    session[:user_id] = nil
+    render json: {}
   end
 end

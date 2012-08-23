@@ -5,7 +5,10 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+    :javascript
+      Todolist.current_user = #{current_user.nil? ? "null" : current_user.id};
 
   %body
+    #navbar
     #main.container
       = yield

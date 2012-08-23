@@ -1,0 +1,9 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      %a.brand{href: "/"}Todo list
+      - if Todolist.current_user
+        %ul.nav.pull-right
+          %li
+            %a#logout{href: '#'}Log out
+

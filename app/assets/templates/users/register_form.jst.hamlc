@@ -1,19 +1,23 @@
 .row
   .span6.offset3
-    .alert.alert-error Error
     %form.form-horizontal
-      %legend Log in
+      %legend Sign up
       .control-group
         %label.control-label{for: "username"}Username
         .controls
           %input#username{type: "text"}
+          %span.help-inline
       .control-group
         %label.control-label{for: "password"}Password
         .controls
           %input#password{type: "password"}
+          %span.help-inline
+      .control-group
+        %label.control-label{for: "password_confirmation"}Password confirmation
+        .controls
+          %input#password_confirmation{type: "password"}
+          %span.help-inline
 
       .control-group
         .controls
-          %button.btn.btn-primary{type: "submit"}Log in
-          or
-          %a#register{href: "signup"}Sign up
+          %button.btn.btn-primary{type: "submit"}Sign up

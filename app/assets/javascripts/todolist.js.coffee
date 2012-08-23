@@ -3,9 +3,11 @@ window.Todolist =
   Collections: {}
   Views: {}
   Routers: {}
+  current_user: null # user id
   init: ->
     router = new Todolist.Routers.Main()
     mainView = new Todolist.Views.Main(el: $("#main.container"), router: router)
+    navbar = new Todolist.Views.Navbar(el: $('#navbar'), router: router)
 
     Backbone.history.start(pushState: true)
 

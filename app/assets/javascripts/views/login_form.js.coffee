@@ -4,6 +4,7 @@ class Todolist.Views.LoginForm extends Backbone.View
 
   events:
     "submit form": "login"
+    "click #register": 'register'
 
   render: ->
     @$el.html(@template())
@@ -17,8 +18,13 @@ class Todolist.Views.LoginForm extends Backbone.View
     session.save(
       { username: @$('#username').val(), password: @$('#password').val() },
       success: (model, response) ->
+        Todolist.current_user = model.id
         Backbone.history.navigate('tasks', trigger: true)
       error: (model, response) ->
         @$('.alert').html(JSON.parse(response.responseText)['errors']).show()
       wait: true
     )
+
+  register: (event) ->
+    event.preventDefault()
+    Backbone.history.navigate('register', trigger: true)
