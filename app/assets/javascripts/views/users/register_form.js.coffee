@@ -24,6 +24,7 @@ class Todolist.Views.RegisterForm extends Backbone.View
       error: (model, response) ->
         errors = JSON.parse(response.responseText)['errors']
         for field in ['username', 'password', 'password_confirmation']
+          @$("##{field}").siblings('.help-inline').text('')
           @$("##{field}").parents('.control-group').removeClass('error')
         for field, err of errors
           @$("##{field}").siblings('.help-inline').text(err.join(', '))
