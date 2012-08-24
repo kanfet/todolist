@@ -5,7 +5,9 @@ class Task < ActiveRecord::Base
 
   attr_accessible :title, :due_date, :priority, :completed, :user
 
-  enumerize :priority, in: [:very_high, :high, :normal, :low, :very_low], default: :normal
+  enumerize :priority,
+            in: {very_high: 5, high: 4, normal: 3, low: 2, very_low: 1},
+            default: :normal
 
   validates :title, presence: true
   validates :due_date, presence: true
