@@ -27,8 +27,7 @@ describe UsersController do
       end
 
       it "returns errors as json" do
-        invalid_user = attributes_for(:invalid_user)
-        post :create, user: invalid_user, format: :json
+        post :create, user: attributes_for(:invalid_user), format: :json
         JSON.parse(response.body)['errors'].should_not be_nil
       end
     end
