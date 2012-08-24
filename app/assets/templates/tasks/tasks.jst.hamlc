@@ -3,9 +3,9 @@
     %strong Completed?
   .span4
     %strong Title
-  .span2
+  #sort-date.span2{class: @dateSortClass}
     %strong Due date
-  .span2
+  #sort-priority.span2{class: @prioritySortClass}
     %strong Priority
   .span3
     %strong Actions

@@ -3,8 +3,21 @@ class TasksController < ApplicationController
   respond_to :json
 
   def index
+    orders = []
+    date_sort = params[:date_sort]
+    if date_sort && (date_sort == "asc" || date_sort == 'desc')
+      orders << "due_date #{date_sort}"
+    end
+    priority_sort = params[:priority_sort]
+    if priority_sort && (priority_sort == "asc" || priority_sort == 'desc')
+      orders << "priority #{priority_sort}"
+    end
+
     tasks = []
-    tasks = Task.where(user_id: current_user.id) if current_user
+    if current_user
+      tasks = Task.where(user_id: current_user.id)
+      tasks = tasks.order(orders.join(", ")) if orders.length > 0
+    end
     respond_with(tasks)
   end
 

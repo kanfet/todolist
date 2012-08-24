@@ -6,3 +6,21 @@ body { padding-top: 60px; }
 @import "bootstrap-datepicker";
 
 .hidden{ display: none; }
+
+.sorting,
+.sorting-asc,
+.sorting-desc {
+  cursor: pointer;
+}
+
+.sorting {
+  background: url(image-path("sort_both.png")) no-repeat center right;
+}
+
+.sorting-asc {
+  background: url(image-path("sort_asc.png")) no-repeat center right;
+}
+
+.sorting-desc {
+  background: url(image-path("sort_desc.png")) no-repeat center right;
+}
