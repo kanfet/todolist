@@ -18,7 +18,7 @@ class Todolist.Views.LoginForm extends Backbone.View
     session.save(
       { username: @$('#username').val(), password: @$('#password').val() },
       success: (model, response) ->
-        Todolist.current_user = model.id
+        Todolist.current_user = response['user']
         Backbone.history.navigate('tasks', trigger: true)
       error: (model, response) ->
         @$('.alert').html(JSON.parse(response.responseText)['errors']).show()

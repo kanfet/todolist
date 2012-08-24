@@ -3,7 +3,7 @@ window.Todolist =
   Collections: {}
   Views: {}
   Routers: {}
-  current_user: null # user id
+  current_user: null # user name
   init: ->
     router = new Todolist.Routers.Main()
     mainView = new Todolist.Views.Main(el: $("#main.container"), router: router)

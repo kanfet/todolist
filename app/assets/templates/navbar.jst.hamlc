@@ -4,6 +4,11 @@
       %a.brand{href: "/"}Todo list
       - if Todolist.current_user
         %ul.nav.pull-right
-          %li
-            %a#logout{href: '#'}Log out
-
+          %li.dropdown
+            %a.dropdown-toggle{href: "#", "data-toggle": "dropdown"}
+              %i.icon-user.icon-white
+              %b= Todolist.current_user
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                %a#logout{href: '#'}Log out
