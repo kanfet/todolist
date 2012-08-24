@@ -2,9 +2,6 @@ class Todolist.Views.Tasks extends Backbone.View
 
   template: JST['tasks/tasks']
 
-#  events:
-#    "click #add-task": "addTask"
-
   initialize: ->
     @collection.on('reset', @render, @)
     @collection.on('change', @render, @)
@@ -16,7 +13,7 @@ class Todolist.Views.Tasks extends Backbone.View
     @$el.append(newTaskForm.render().el)
     for task in @collection.models
       @appendTask(task)
-    @$('.datepicker').datepicker(format: 'yyyy-mm-dd', weekStart: 1, autoclose: true)
+    @$('[data-behavior="datepicker"]').datepicker(format: 'yyyy-mm-dd', weekStart: 1, autoclose: true)
     @
 
   appendTask: (task) ->

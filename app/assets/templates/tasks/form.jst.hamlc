@@ -1,11 +1,17 @@
 .row
   %form.form-inline
+    .span1
+      %label.checkbox.inline
+        - if @task.get('completed')
+          %input{name: "completed", type: "checkbox", checked: true}
+        - else
+          %input{name: "completed", type: "checkbox"}
     .span4
       .control-group
-        %input.span2{name: "title", type: "text", placeholder: "Title", value: @task.get('title')}
+        %input.span3{name: "title", type: "text", placeholder: "Title", value: @task.get('title')}
         %span.help-inline
     .span2
-      %input.span2.datepicker{name: "due_date", type: "text", placeholder: "Due date", value: @task.get('due_date')}
+      %input.span2{name: "due_date", type: "text", placeholder: "Due date", value: @task.get('due_date'), "data-behavior": "datepicker"}
     .span2
       %select.span2{name: "priority"}
         - for p, l of Todolist.priorities
@@ -13,15 +19,9 @@
             %option{value: p, selected: "selected"}= l
           - else
             %option{value: p}= l
-    .span2
-      %label.checkbox.inline
-        - if @task.get('completed')
-          %input{name: "completed", type: "checkbox", checked: true}
-        - else
-          %input{name: "completed", type: "checkbox"}
-    .span2
+    .span3
       .pull-right
-        - if @task.isNew
+        - if @task.isNew()
           %button#add-task.btn.btn-primary Add
         - else
           %button#update-task.btn.btn-success Update

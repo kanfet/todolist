@@ -1,11 +1,11 @@
-.row
+.row{style: "text-align: center"}
+  .span1
+    %strong Completed?
   .span4
     %strong Title
   .span2
     %strong Due date
   .span2
     %strong Priority
-  .span2
-    %strong Completed?
 
 %hr

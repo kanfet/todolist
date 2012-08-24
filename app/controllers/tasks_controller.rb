@@ -16,7 +16,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    task = Task.find(params[:task][:id])
+    task = Task.find(params[:id])
     task.update_attributes(params[:task]) if current_user && current_user.id == task.user_id
     respond_with(task)
   end

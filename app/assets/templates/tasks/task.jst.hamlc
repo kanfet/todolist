@@ -1,45 +1,21 @@
 %hr
 
-#display-section.row
+.display-section.row
+  .span1
+    - if @task.get('completed')
+      %i.icon-ok
+    - else
+      %i.icon-remove
   .span4
     = @task.get('title')
   .span2
     = @task.get('due_date')
   .span2.center
     = Todolist.priorities[@task.get('priority')]
-  .span2
-    - if @task.get('completed')
-      %i.icon-ok
-    - else
-      %i.icon-remove
-  .span2
+  .span3
     .pull-right
       %button#edit-task.btn.btn-success Edit
       %button#delete-task.btn.btn-danger Delete
 
-#edit-section.hidden
-  .row
-    %form.form-inline
-      .span4
-        .control-group
-          %input.span2{name: "title", type: "text", placeholder: "Title", value: @task.get('title')}
-          %span.help-inline
-      .span2
-        %input.span2.datepicker{name: "due_date", type: "text", placeholder: "Due date", value: @task.get('due_date')}
-      .span2
-        %select.span2{name: "priority"}
-          - for p, l of Todolist.priorities
-            - if @task.get('priority') == p
-              %option{value: p, selected: "selected"}= l
-            - else
-              %option{value: p}= l
-      .span2
-        %label.checkbox.inline
-          - if @task.get('completed')
-            %input{name: "completed", type: "checkbox", checked: true}
-          - else
-            %input{name: "completed", type: "checkbox"}
-      .span2
-        .pull-right
-          %button#update-task.btn.btn-success Update
-          %button#cancel-edit-task.btn Cancel
+.edit-section.hidden
+  != JST['tasks/form']({task: @task})
