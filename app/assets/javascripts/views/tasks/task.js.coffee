@@ -15,10 +15,11 @@ class Todolist.Views.Task extends Backbone.View
   deleteTask: (event) ->
     event.preventDefault()
 
-    @model.destroy
-      success: =>
-        @$el.remove()
-        @.unbind()
+    if confirm("Are you sure?")
+      @model.destroy
+        success: =>
+          @$el.remove()
+          @.unbind()
 
   editTask: (event) ->
     event.preventDefault()
