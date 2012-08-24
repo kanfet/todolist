@@ -6,8 +6,13 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     :javascript
-      Todolist.current_user = '#{current_user.nil? ? "null" : current_user.username}';
       Todolist.priorities = #{Task.priority_options.to_json};
+    - if current_user.nil?
+      :javascript
+        Todolist.current_user = null;
+    - else
+      :javascript
+        Todolist.current_user = "#{current_user.username}";
 
   %body
     #navbar

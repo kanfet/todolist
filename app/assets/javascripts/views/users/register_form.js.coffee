@@ -19,7 +19,8 @@ class Todolist.Views.RegisterForm extends Backbone.View
     user.save(
       { username: username, password: password, password_confirmation: password_confirmation }
       success:(model, response) ->
-        Backbone.history.navigate('', trigger: true)
+        session = new Todolist.Models.Session()
+        session.login(username, password)
       error: (model, response) ->
         errors = JSON.parse(response.responseText)['errors']
         for field in ['username', 'password', 'password_confirmation']
