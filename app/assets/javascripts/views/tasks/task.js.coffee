@@ -10,6 +10,7 @@ class Todolist.Views.Task extends Backbone.View
     "click #mark-task-completed": "markTaskAsCompleted"
 
   render: ->
+    @el.id = "task#{@model.id}"
     @$el.html(@template(task: @model))
     @
 

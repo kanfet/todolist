@@ -6,6 +6,7 @@ class Todolist.Views.TaskForm extends Backbone.View
     "click #add-task": "addTask"
 
   render: ->
+    @el.id = "new_task"
     @$el.html(@template(task: @model))
     @
 
