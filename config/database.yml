@@ -49,7 +49,9 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: todolist_production
+  database: todolist
   pool: 5
   username: todolist_user
   password: "123"
+  host: localhost
+  port: 5432
