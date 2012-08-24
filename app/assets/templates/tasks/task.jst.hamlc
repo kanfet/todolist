@@ -5,7 +5,7 @@
     - if @task.get('completed')
       %i.icon-ok
     - else
-      %i.icon-remove
+      &nbsp;
   .span4
     = @task.get('title')
   .span2
@@ -14,6 +14,8 @@
     = Todolist.priorities[@task.get('priority')]
   .span3
     .pull-right
+      - unless @task.get('completed')
+        %button#mark-task-completed.btn.btn-info Done
       %button#edit-task.btn.btn-success Edit
       %button#delete-task.btn.btn-danger Delete
 

@@ -7,6 +7,7 @@ class Todolist.Views.Task extends Backbone.View
     "click #edit-task": "editTask"
     "click #cancel-edit-task": "cancelEditTask"
     "click #update-task": "updateTask"
+    "click #mark-task-completed": "markTaskAsCompleted"
 
   render: ->
     @$el.html(@template(task: @model))
@@ -47,6 +48,13 @@ class Todolist.Views.Task extends Backbone.View
         for field, err of errors
           @$("[name='#{field}']").siblings('.help-inline').text(err.join(', '))
           @$("[name='#{field}']").parents('.control-group').addClass('error')
+    )
+
+  markTaskAsCompleted: (event) ->
+    event.preventDefault()
+    @model.save(
+      { completed: true }
+      wait: true
     )
 
   _hideForm: ->

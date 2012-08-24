@@ -11,7 +11,7 @@
         %input.span3{name: "title", type: "text", placeholder: "Title", value: @task.get('title')}
         %span.help-inline
     .span2
-      %input.span2{name: "due_date", type: "text", placeholder: "Due date", value: @task.get('due_date'), "data-behavior": "datepicker"}
+      %input.span2{name: "due_date", type: "text", placeholder: "Today?", value: @task.get('due_date'), "data-behavior": "datepicker"}
     .span2
       %select.span2{name: "priority"}
         - for p, l of Todolist.priorities

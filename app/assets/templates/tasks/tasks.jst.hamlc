@@ -7,5 +7,7 @@
     %strong Due date
   .span2
     %strong Priority
+  .span3
+    %strong Actions
 
 %hr
