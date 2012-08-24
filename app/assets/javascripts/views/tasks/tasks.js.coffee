@@ -10,8 +10,8 @@ class Todolist.Views.Tasks extends Backbone.View
     @sortByDateDirection = null
     @sortByPriorityDirection = null
     @collection.on('reset', @render, @)
-    @collection.on('change', @render, @)
-    @collection.on('add', @render, @)
+    @collection.on('change', @refreshList, @)
+    @collection.on('add', @refreshList, @)
 
   render: ->
     if @sortByDateDirection
@@ -36,10 +36,13 @@ class Todolist.Views.Tasks extends Backbone.View
 
   sortByDate: (event) ->
     @sortByDateDirection = @_toggleDirection(@sortByDateDirection)
-    @collection.fetch({data: {date_sort: @sortByDateDirection, priority_sort: @sortByPriorityDirection}})
+    @refreshList()
 
   sortByPriority: (event) ->
     @sortByPriorityDirection = @_toggleDirection(@sortByPriorityDirection)
+    @refreshList()
+
+  refreshList: ->
     @collection.fetch({data: {date_sort: @sortByDateDirection, priority_sort: @sortByPriorityDirection}})
 
   _toggleDirection: (direction) ->

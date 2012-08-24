@@ -12,11 +12,12 @@ class TasksController < ApplicationController
     if priority_sort && (priority_sort == "asc" || priority_sort == 'desc')
       orders << "priority #{priority_sort}"
     end
+    orders << "id"
 
     tasks = []
     if current_user
       tasks = Task.where(user_id: current_user.id)
-      tasks = tasks.order(orders.join(", ")) if orders.length > 0
+      tasks = tasks.order(orders.join(", "))
     end
     respond_with(tasks)
   end
@@ -30,7 +31,11 @@ class TasksController < ApplicationController
 
   def update
     task = Task.find(params[:id])
-    task.update_attributes(params[:task]) if current_user && current_user.id == task.user_id
+    if current_user && current_user.id == task.user_id
+      params_for_update = params[:task]
+      params_for_update[:completed] ||= false
+      task.update_attributes(params_for_update)
+    end
     respond_with(task)
   end
 
